@@ -13,6 +13,10 @@ const CharItem = () => {
             backgroundRepeat: "no-repeat",
           }}
         ></div>
+        <p className={style.charItemDescr}>
+          Decades after participating in military airdrops with Captain America
+          during
+        </p>
       </div>
 
       <p className={style.charItemName}>MENTALLO</p>

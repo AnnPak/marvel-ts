@@ -1,11 +1,13 @@
 .charItem {
+    position: relative;
     img {
         max-width: 100%;
     }
 }
 
 .charItemImgWrap {
-    height: 330px;
+    position: relative;
+    height: 23.5vw;
     overflow: hidden;
 }
 
@@ -17,10 +19,6 @@
     transition: all ease-in-out 0.4s;
 }
 
-.charItem:hover .charItemImg {
-    transform: scale(1.25) rotate(2deg);
-}
-
 .charItemName {
     color: #000;
     font-size: 1.2rem;
@@ -28,6 +26,45 @@
     transition: all ease-in-out 0.4s;
 }
 
-.charItem:hover .charItemName {
-    color: #eb2328;
+.charItemDescr {
+    color: #f9f9f9;
+    z-index: 2;
+    font-size: 1.3rem;
+    opacity: 0;
+    transition: opacity ease-in-out 0.4s;
+}
+
+.charItemImgWrap::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #0006;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity ease-in-out 0.4s;
+}
+
+.charItem:hover {
+    .charItemDescr {
+        position: absolute;
+        opacity: 1;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: fit-content;
+        width: fit-content;
+        padding: 16px;
+    }
+    .charItemName {
+        color: #eb2328;
+    }
+    .charItemImg {
+        transform: scale(1.25) rotate(2deg);
+    }
+    .charItemImgWrap::before {
+        opacity: 1;
+    }
 }
