@@ -1,6 +1,8 @@
-import styles from "./app-banner.module.scss";
-import img from "../../assets/hero.jpg";
 import classNames from "classnames";
+
+import styles from "./app-banner.module.scss";
+import appStyles from "../app/app.module.scss";
+import img from "../../assets/hero.jpg";
 
 const AppBanner = () => {
   return (
@@ -13,7 +15,10 @@ const AppBanner = () => {
     >
       <div className={styles.randomCharBlur}>
         <div
-          className={classNames(styles.container, styles.randomCharContainer)}
+          className={classNames(
+            appStyles.container,
+            styles.randomCharContainer
+          )}
         >
           <img
             className={styles.randomCharImg}
