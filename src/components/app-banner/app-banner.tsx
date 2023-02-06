@@ -3,6 +3,7 @@ import classNames from "classnames";
 import styles from "./app-banner.module.scss";
 import appStyles from "../app/app.module.scss";
 import img from "../../assets/hero.jpg";
+import { PrimaryButton, PrimaryButtonLink } from "../buttons/buttons";
 
 const AppBanner = () => {
   return (
@@ -33,6 +34,10 @@ const AppBanner = () => {
               upon by a covert government unit, who bonded unbreakable
               adamantium to his skele
             </p>
+            <>
+              <PrimaryButtonLink link="/" text="Info" />
+              <PrimaryButtonLink link="/" text="Wiki" />
+            </>
           </div>
         </div>
       </div>
