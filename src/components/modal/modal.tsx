@@ -2,6 +2,7 @@ import styles from "./modal.module.scss";
 import img from "../../assets/hero.jpg";
 import { createPortal } from "react-dom";
 import { CloseBtn } from "../buttons/buttons";
+import ModalOverlay from "../modal-overlay/modal-overlay";
 
 const Modal = () => {
   const modalRoot = document.getElementById("react-modals")!;
@@ -12,6 +13,7 @@ const Modal = () => {
 
   return createPortal(
     <>
+      <ModalOverlay closeModal={() => closeModal()} />
       <div className={styles.charInfo}>
         <div
           className={styles.charInfoTop}
