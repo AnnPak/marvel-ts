@@ -3,7 +3,7 @@ import classNames from "classnames";
 import styles from "./app-banner.module.scss";
 import appStyles from "../app/app.module.scss";
 import img from "../../assets/hero.jpg";
-import { PrimaryButton, PrimaryButtonLink } from "../buttons/buttons";
+import { PrimaryButtonLink } from "../buttons/buttons";
 
 const AppBanner = () => {
   return (
@@ -14,7 +14,7 @@ const AppBanner = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className={styles.randomCharBlur}>
+      <div className={styles.blurBlock}>
         <div
           className={classNames(
             appStyles.container,

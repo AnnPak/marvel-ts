@@ -32,3 +32,21 @@
         height: 100%;
     }
 }
+
+.closeBtn {
+    position: absolute;
+    right: -42px;
+    top: -20px;
+    cursor: pointer;
+    svg {
+        transition: all 0.25s;
+        opacity: 0.25;
+    }
+}
+
+.closeBtn:hover {
+    svg {
+        transform: rotate(270deg);
+        opacity: 1;
+    }
+}

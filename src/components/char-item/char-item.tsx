@@ -10,7 +10,6 @@ const CharItem = () => {
           className={style.charItemImg}
           style={{
             backgroundImage: `url(${img})`,
-            backgroundRepeat: "no-repeat",
           }}
         ></div>
         <p className={style.charItemDescr}>
