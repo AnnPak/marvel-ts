@@ -39,9 +39,15 @@ export type TInitialState = {
   fetchHeroesLoading: boolean;
   fetchHeroesError: boolean;
   heroes: Array<THero> | null;
+  currentOffset: number;
 };
 
 export type TCharItem = Pick<
   THero,
   "id" | "name" | "description" | "comics" | "urls" | "thumbnail"
 >;
+
+export type TPrimaryButton = {
+  text: string;
+  onClickFunc?: () => void;
+};

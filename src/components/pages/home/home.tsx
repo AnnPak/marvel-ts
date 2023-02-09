@@ -9,10 +9,10 @@ const Home = () => {
   return (
     <>
       <AppBanner />
-      <div className={classNames(appStyles.container, styles.charContaner)}>
+      <section className={classNames(appStyles.container, styles.charContaner)}>
         <CharList />
         {/* <Modal /> */}
-      </div>
+      </section>
     </>
   );
 };

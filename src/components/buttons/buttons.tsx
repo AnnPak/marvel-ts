@@ -2,10 +2,14 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./buttons.module.scss";
+import { TPrimaryButton } from "../../utils/types";
 
-export const PrimaryButton: FC<{ text: string }> = ({ text }) => {
+export const PrimaryButton: FC<TPrimaryButton> = ({ text, onClickFunc }) => {
   return (
-    <button className={styles.primaryBtn}>
+    <button
+      className={styles.primaryBtn}
+      onClick={onClickFunc ? () => onClickFunc() : undefined}
+    >
       <svg viewBox="0 0 180 60" className="border">
         <polyline points="179,1 179,59 1,59 1,1 179,1" className="bg-line" />
         <polyline points="179,1 179,59 1,59 1,1 179,1" className="hl-line" />
@@ -30,9 +34,9 @@ export const PrimaryButtonLink: FC<{ text: string; link: string }> = ({
   );
 };
 
-export const CloseBtn: FC<{closeModal: () => void}> = ({closeModal}) => {
+export const CloseBtn: FC<{ closeModal: () => void }> = ({ closeModal }) => {
   return (
-    <div className={styles.closeBtn} onClick={() => closeModal()}>
+    <button className={styles.closeBtn} onClick={() => closeModal()}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0,0,256,256"
@@ -60,6 +64,6 @@ export const CloseBtn: FC<{closeModal: () => void}> = ({closeModal}) => {
           </g>
         </g>
       </svg>
-    </div>
+    </button>
   );
 };
