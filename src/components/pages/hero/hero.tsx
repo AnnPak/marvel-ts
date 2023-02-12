@@ -10,18 +10,23 @@ import { fetchComics } from "../../../store/comics";
 import { AppBannerComponent } from "../../app-banner/app-banner";
 import bannerStyles from "../../app-banner/app-banner.module.scss";
 import ComicsList from "../../comics-list/comics-list";
+import { fetchHeroSeries } from "../../../store/series";
 
 const HeroPage = () => {
   const { heroId } = useParams();
   const { hero } = useAppSelector((store: RootState) => store.heroes);
   const { heroComics } = useAppSelector((store: RootState) => store.comics);
+  const { heroSeries } = useAppSelector((store: RootState) => store.series);
   const [currentHero, setCurrentHero] = useState<THero | null>(null);
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    heroId && dispatch(fetchHero(+heroId));
-    heroId && dispatch(fetchComics(+heroId));
+    if (heroId) {
+      dispatch(fetchHero(+heroId));
+      dispatch(fetchComics(+heroId));
+      dispatch(fetchHeroSeries(+heroId));
+    }
   }, [heroId, dispatch]);
 
   useEffect(() => {
@@ -35,7 +40,20 @@ const HeroPage = () => {
       <section className={appStyles.container}>
         <div className={styles.comicsBlock}>
           <h2>Comics:</h2>
-          <ComicsList heroComics={heroComics} />
+          {heroComics.length ? (
+            <ComicsList heroComics={heroComics} />
+          ) : (
+            "There is no comics for this character "
+          )}
+        </div>
+
+        <div className={styles.comicsBlock}>
+          <h2>Series:</h2>
+          {heroSeries.length ? (
+            <ComicsList heroComics={heroSeries} />
+          ) : (
+            "There is no series for this character "
+          )}
         </div>
       </section>
     </section>

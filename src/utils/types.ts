@@ -54,7 +54,14 @@ export type TInitialComicsState = {
   fetchComicsLoading: boolean;
   fetchComicsError: boolean;
 
-  heroComics: THeroComics[];
+  heroComics: THeroComics[] | [];
+};
+
+export type TInitialSeriesState = {
+  fetchHeroSeriesLoading: boolean;
+  fetchHeroSeriesError: boolean;
+
+  heroSeries: THeroComics[] | [];
 };
 
 export type THeroComics = {
@@ -66,6 +73,8 @@ export type THeroComics = {
     extension: string;
   };
 };
+
+export type THeroSeries = THeroComics;
 
 export type TCharItem = Pick<
   THero,

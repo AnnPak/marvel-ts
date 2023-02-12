@@ -1,4 +1,4 @@
-import { API_BASE, API_KEY } from "./../utils/constants";
+import { API_BASE, API_KEY } from "../utils/constants";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { request } from "../utils/request";
 import { TInitialComicsState } from "../utils/types";
