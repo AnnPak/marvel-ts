@@ -1,8 +1,8 @@
-.randomChar {
+.bannerChar {
   box-shadow: 5px 5px 20px #767676;
   height: 59vh;
   background-size: cover;
-  background-position-y: 36%;
+  background-position: center 36%;
 }
 
 .blurBlock {
@@ -15,48 +15,113 @@
   height: 100%;
 }
 
-.randomCharImg {
+.bannerCharImg {
   width: 350px;
   max-height: 460px;
 }
 
-.randomCharInfo {
+.bannerCharInfo {
   margin-left: 65px;
   max-width: 41%;
 }
 
-.randomCharContainer {
+.bannerContainer {
   display: flex;
   align-items: center;
 }
 
-.randomCharName {
+.bannerCharName {
   font-size: 1.8rem;
   color: #f9f9f9;
   font-weight: 600;
 }
 
-.randomCharDescr {
+.bannerCharDescr {
   font-size: 1.2rem;
   color: #f9f9f9;
   font-weight: 600;
   margin-bottom: 40px;
 }
 
-.randomCharBtns {
+.bannerCharBtns {
   display: flex;
 }
 
-.randomCharImgWrap {
+.bannerImgWrap {
   overflow: hidden;
   img {
     transition: all 5s ease-in-out;
   }
 }
 
-.randomCharImgWrap:hover {
+@-webkit-keyframes zoom-a {
+  0% {
+    background-size: 100% auto;
+  }
+  100% {
+    background-size: 130% auto;
+  }
+}
+
+@-moz-keyframes zoom-a {
+  0% {
+    background-size: 100% auto;
+  }
+  100% {
+    background-size: 130% auto;
+  }
+}
+
+@-o-keyframes zoom-a {
+  0% {
+    background-size: 100% auto;
+  }
+  100% {
+    background-size: 130% auto;
+  }
+}
+
+@keyframes zoom-a {
+  0% {
+    background-size: 100% auto;
+  }
+  100% {
+    background-size: 130% auto;
+  }
+}
+
+.bannerImgWrap:hover {
   transition: all 2s ease-in-out;
   img {
     transform: scale(1.2);
+  }
+}
+
+.heroDetailPage {
+  .bannerChar {
+    height: 69vh;
+  }
+  img {
+    max-height: 649px;
+    width: auto;
+    transition: none;
+  }
+  a:hover {
+    img {
+      transform: none;
+    }
+  }
+  .bannerChar {
+    -webkit-animation: zoom-a 15s linear infinite alternate;
+    /* Safari 4+ */
+    -moz-animation: zoom-a 15s linear infinite alternate;
+    /* Fx 5+ */
+    -o-animation: zoom-a 15s linear infinite alternate;
+    /* Opera 12+ */
+    animation: zoom-a 15s linear infinite alternate;
+    /* IE 10+, Fx 29+ */
+  }
+  .bannerCharBtns {
+    display: none;
   }
 }

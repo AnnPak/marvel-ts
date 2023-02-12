@@ -3,7 +3,7 @@ import AppHeader from "../app-header/app-header";
 
 import { HeroPage, Home } from "../pages/pages";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { fetchHeroes } from "../../store/slice";
+import { fetchHeroes } from "../../store/heroes";
 import { useAppDispatch } from "../../store";
 
 const App = () => {

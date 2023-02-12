@@ -1,10 +1,10 @@
-import { TInitialState } from "./../utils/types";
-import { API_KEY, BASE_OFFSET, BASE_LIMIT } from "./../utils/constants";
+import { TInitialHeroState } from "../utils/types";
+import { API_KEY, BASE_OFFSET, BASE_LIMIT } from "../utils/constants";
 import { API_BASE } from "../utils/constants";
-import { request } from "./../utils/request";
+import { request } from "../utils/request";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const initialState: TInitialState = {
+const initialState: TInitialHeroState = {
   fetchHeroesLoading: false,
   fetchHeroesError: false,
 

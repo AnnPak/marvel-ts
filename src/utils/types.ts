@@ -35,7 +35,7 @@ export type THeroInformationItem = {
   returned: number;
 };
 
-export type TInitialState = {
+export type TInitialHeroState = {
   fetchHeroesLoading: boolean;
   fetchHeroesError: boolean;
 
@@ -48,6 +48,23 @@ export type TInitialState = {
 
   showMoreHeroesLoading: boolean;
   showMoreHeroesError: boolean;
+};
+
+export type TInitialComicsState = {
+  fetchComicsLoading: boolean;
+  fetchComicsError: boolean;
+
+  heroComics: THeroComics[];
+};
+
+export type THeroComics = {
+  id: number;
+  title: string;
+  description: string;
+  thumbnail: {
+    path: string;
+    extension: string;
+  };
 };
 
 export type TCharItem = Pick<

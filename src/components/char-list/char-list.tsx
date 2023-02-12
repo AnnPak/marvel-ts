@@ -1,5 +1,5 @@
 import { RootState, useAppDispatch, useAppSelector } from "../../store";
-import { showMoreHeroes } from "../../store/slice";
+import { showMoreHeroes } from "../../store/heroes";
 import { THero } from "../../utils/types";
 import { PrimaryButton } from "../buttons/buttons";
 import CharItem from "../char-item/char-item";
@@ -8,7 +8,7 @@ import { nanoid } from "nanoid";
 
 const CharList = () => {
   const { heroes, currentOffset } = useAppSelector(
-    (store: RootState) => store.RootReducer
+    (store: RootState) => store.heroes
   );
   const dispatch = useAppDispatch();
 

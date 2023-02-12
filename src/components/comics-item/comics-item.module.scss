@@ -1,0 +1,63 @@
+.comicsItem {
+}
+
+.comicsImgWrapper {
+}
+
+.comicsItemImg {
+  width: 100%;
+  height: 431px;
+  background-size: cover;
+  transition: all ease-in-out 0.4s;
+}
+
+.comicsImgWrapper {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  &:hover {
+    .comicsItemImg {
+      transform: scale(1.25) rotate(2deg);
+    }
+    .charItemDescr {
+      opacity: 1;
+    }
+    &:before {
+      opacity: 1;
+    }
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #0006;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity ease-in-out 0.4s;
+  }
+}
+
+.charItemDescr {
+  position: absolute;
+  opacity: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 90%;
+  height: 4em;
+  transition: opacity ease-in-out 0.4s;
+  color: #f9f9f9;
+  z-index: 2;
+  font-size: 1.5rem;
+}
+
+.charItemName {
+  font-size: 1.3rem;
+  font-weight: 600;
+}

@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import RootReducer from './slice'
+import heroes from "./heroes";
+import comics from "./comics";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 const store = configureStore({
-  reducer: { RootReducer },
+  reducer: { heroes, comics },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
   devTools: process.env.NODE_ENV !== "production",
 });
