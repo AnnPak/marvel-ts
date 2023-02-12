@@ -25,12 +25,12 @@ export type THeroInformationItem = {
     | {
         resourceURI: string;
         name: string;
-      }
+      }[]
     | {
         resourceURI: string;
         name: string;
         type: string;
-      }
+      }[]
     | [];
   returned: number;
 };
@@ -38,8 +38,16 @@ export type THeroInformationItem = {
 export type TInitialState = {
   fetchHeroesLoading: boolean;
   fetchHeroesError: boolean;
+
   heroes: Array<THero> | null;
+  hero: Array<THero> | null;
   currentOffset: number;
+
+  fetchHeroLoading: boolean;
+  fetchHeroError: boolean;
+
+  showMoreHeroesLoading: boolean;
+  showMoreHeroesError: boolean;
 };
 
 export type TCharItem = Pick<

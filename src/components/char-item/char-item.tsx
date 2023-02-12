@@ -2,12 +2,13 @@ import { FC } from "react";
 
 import { TCharItem } from "../../utils/types";
 import style from "./char-item.module.scss";
+import { Link } from "react-router-dom";
 
 const CharItem: FC<TCharItem> = (props) => {
   const { id, name, description, thumbnail } = props;
 
   return (
-    <div className={style.charItem} key={id}>
+    <Link to={`hero/${id}`} className={style.charItem}>
       <div className={style.charItemImgWrap}>
         <div
           className={style.charItemImg}
@@ -25,7 +26,7 @@ const CharItem: FC<TCharItem> = (props) => {
       </div>
 
       <p className={style.charItemName}>{name}</p>
-    </div>
+    </Link>
   );
 };
 

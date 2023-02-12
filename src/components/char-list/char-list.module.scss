@@ -1,16 +1,23 @@
 .charlist {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
 }
 
 .charlistShowMore {
-    margin-top: 70px;
-    button {
-        display: block;
-        margin: 0 auto;
-        width: 254px;
-        padding: 14px 0;
-        color: #000;
+  margin-top: 70px;
+  button {
+    display: block;
+    margin: 0 auto;
+    width: 254px;
+    padding: 14px 0;
+    color: #000;
+  }
+  button:hover {
+    background: #9f0013;
+    color: #fff;
+    svg {
+      display: none;
     }
+  }
 }

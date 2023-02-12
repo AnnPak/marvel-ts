@@ -4,13 +4,16 @@ import { THero } from "../../utils/types";
 import { PrimaryButton } from "../buttons/buttons";
 import CharItem from "../char-item/char-item";
 import styles from "./char-list.module.scss";
+import { nanoid } from "nanoid";
 
 const CharList = () => {
-  const { heroes } = useAppSelector((store: RootState) => store.RootReducer);
+  const { heroes, currentOffset } = useAppSelector(
+    (store: RootState) => store.RootReducer
+  );
   const dispatch = useAppDispatch();
 
   const showMore = () => {
-    dispatch(showMoreHeroes());
+    dispatch(showMoreHeroes(currentOffset));
   };
 
   return (
@@ -22,6 +25,7 @@ const CharList = () => {
               id={hero.id}
               name={hero.name}
               description={hero.description}
+              key={nanoid()}
               comics={hero.comics}
               urls={hero.urls}
               thumbnail={hero.thumbnail}

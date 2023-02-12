@@ -1,42 +1,62 @@
 .randomChar {
-    box-shadow: 5px 5px 20px #767676;
-    height: 59vh;
-    background-size: cover;
-    background-position-y: 36%;
+  box-shadow: 5px 5px 20px #767676;
+  height: 59vh;
+  background-size: cover;
+  background-position-y: 36%;
 }
 
 .blurBlock {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #2c2c2c33;
-    -webkit-backdrop-filter: blur(64px);
-    backdrop-filter: blur(16px);
-    height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2c2c2c33;
+  -webkit-backdrop-filter: blur(64px);
+  backdrop-filter: blur(16px);
+  height: 100%;
 }
 
 .randomCharImg {
-    width: 350px;
+  width: 350px;
+  max-height: 460px;
 }
 
 .randomCharInfo {
-    margin-left: 39px;
-    max-width: 41%;
+  margin-left: 65px;
+  max-width: 41%;
 }
 
 .randomCharContainer {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .randomCharName {
-    font-size: 1.8rem;
-    color: #f9f9f9;
-    font-weight: 600;
+  font-size: 1.8rem;
+  color: #f9f9f9;
+  font-weight: 600;
 }
 
 .randomCharDescr {
-    font-size: 1.2rem;
-    color: #f9f9f9;
-    font-weight: 600;
+  font-size: 1.2rem;
+  color: #f9f9f9;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.randomCharBtns {
+  display: flex;
+}
+
+.randomCharImgWrap {
+  overflow: hidden;
+  img {
+    transition: all 5s ease-in-out;
+  }
+}
+
+.randomCharImgWrap:hover {
+  transition: all 2s ease-in-out;
+  img {
+    transform: scale(1.2);
+  }
 }
