@@ -1,15 +1,15 @@
 import { nanoid } from "nanoid";
-import ComicsItem from "../comics-item/comics-item";
+import MediaItem from "../media-item/media-item";
 import { FC } from "react";
 import { THeroComics } from "../../utils/types";
-import styles from "./comics-list.module.scss";
+import styles from "./media-list.module.scss";
 
-const ComicsList: FC<{ heroComics: THeroComics[] }> = ({ heroComics }) => {
+const ComicsList: FC<{ heroMedia: THeroComics[] }> = ({ heroMedia }) => {
   return (
     <div className={styles.comicsList}>
-      {heroComics &&
-        heroComics?.map((item) => (
-          <ComicsItem
+      {heroMedia &&
+        heroMedia?.map((item) => (
+          <MediaItem
             key={nanoid()}
             id={item.id}
             thumbnail={item.thumbnail}

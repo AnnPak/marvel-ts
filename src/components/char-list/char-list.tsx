@@ -27,6 +27,7 @@ const CharList = () => {
               description={hero.description}
               key={nanoid()}
               comics={hero.comics}
+              series={hero.series}
               urls={hero.urls}
               thumbnail={hero.thumbnail}
             />

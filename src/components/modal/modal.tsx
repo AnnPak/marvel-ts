@@ -38,14 +38,14 @@ const Modal = () => {
           <p className={styles.charComicsTitle}>Comics:</p>
 
           <ul className={styles.charComicsList}>
-            <li className={styles.charComicsItem}>
+            <li className={styles.charMediaItem}>
               Marvel New Year's Eve Special Infinite Comic (2017) #1
             </li>
-            <li className={styles.charComicsItem}>A+X (2012) #6</li>
-            <li className={styles.charComicsItem}>A-Force (2016) #6</li>
-            <li className={styles.charComicsItem}>A-Force (2016) #7</li>
-            <li className={styles.charComicsItem}>A-Force (2016) #8</li>
-            <li className={styles.charComicsItem}>A-Force (2016) #9</li>
+            <li className={styles.charMediaItem}>A+X (2012) #6</li>
+            <li className={styles.charMediaItem}>A-Force (2016) #6</li>
+            <li className={styles.charMediaItem}>A-Force (2016) #7</li>
+            <li className={styles.charMediaItem}>A-Force (2016) #8</li>
+            <li className={styles.charMediaItem}>A-Force (2016) #9</li>
           </ul>
         </div>
       </div>

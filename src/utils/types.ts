@@ -78,7 +78,7 @@ export type THeroSeries = THeroComics;
 
 export type TCharItem = Pick<
   THero,
-  "id" | "name" | "description" | "comics" | "urls" | "thumbnail"
+  "id" | "name" | "description" | "comics" | "urls" | "thumbnail" | "series"
 >;
 
 export type TPrimaryButton = {

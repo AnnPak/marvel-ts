@@ -1,50 +1,50 @@
 .charInfo {
-    width: 50%;
-    height: fit-content;
-    box-shadow: 0 0 20px #4c4b4bab;
-    position: relative;
+  width: 50%;
+  height: fit-content;
+  box-shadow: 0 0 20px #4c4b4bab;
+  position: relative;
 }
 
 .charInfoTop {
-    background-position: center;
-    background-size: cover;
+  background-position: center;
+  background-size: cover;
 }
 
 .charInfoBlur {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #0000000d;
-    -webkit-backdrop-filter: blur(35px);
-    backdrop-filter: blur(35px);
-    height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #0000000d;
+  -webkit-backdrop-filter: blur(35px);
+  backdrop-filter: blur(35px);
+  height: fit-content;
 }
 
 .charInfoImg {
-    max-width: 80%;
-    margin: 31px 0;
+  max-width: 80%;
+  margin: 31px 0;
 }
 
 .charInfoBlock {
-    padding: 20px;
-    .charInfoName {
-        margin: 0;
-        color: #9f0013;
-        font-weight: 600;
-    }
-    .charComicsTitle {
-        font-weight: 600;
-        font-size: 1.1rem;
-    }
+  padding: 20px;
+  .charInfoName {
+    margin: 0;
+    color: #9f0013;
+    font-weight: 600;
+  }
+  .charComicsTitle {
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
 }
 
 .charComicsList {
-    padding: 0;
+  padding: 0;
 }
 
-.charComicsItem {
-    padding: 0 10px;
-    line-height: 25px;
-    box-shadow: 0 4px 4px #4c4b4bab;
-    margin-top: 10px;
+.charMediaItem {
+  padding: 0 10px;
+  line-height: 25px;
+  box-shadow: 0 4px 4px #4c4b4bab;
+  margin-top: 10px;
 }

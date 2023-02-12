@@ -9,7 +9,7 @@ import styles from "./hero.module.scss";
 import { fetchComics } from "../../../store/comics";
 import { AppBannerComponent } from "../../app-banner/app-banner";
 import bannerStyles from "../../app-banner/app-banner.module.scss";
-import ComicsList from "../../comics-list/comics-list";
+import ComicsList from "../../media-list/media-list";
 import { fetchHeroSeries } from "../../../store/series";
 
 const HeroPage = () => {
@@ -41,7 +41,7 @@ const HeroPage = () => {
         <div className={styles.comicsBlock}>
           <h2>Comics:</h2>
           {heroComics.length ? (
-            <ComicsList heroComics={heroComics} />
+            <ComicsList heroMedia={heroComics} />
           ) : (
             "There is no comics for this character "
           )}
@@ -50,7 +50,7 @@ const HeroPage = () => {
         <div className={styles.comicsBlock}>
           <h2>Series:</h2>
           {heroSeries.length ? (
-            <ComicsList heroComics={heroSeries} />
+            <ComicsList heroMedia={heroSeries} />
           ) : (
             "There is no series for this character "
           )}

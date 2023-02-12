@@ -1,4 +1,4 @@
-.comicsItemImg {
+.MediaItemImg {
   width: 100%;
   height: 431px;
   background-size: cover;
@@ -10,7 +10,7 @@
   cursor: pointer;
   overflow: hidden;
   &:hover {
-    .comicsItemImg {
+    .MediaItemImg {
       transform: scale(1.25) rotate(2deg);
     }
     .charItemDescr {

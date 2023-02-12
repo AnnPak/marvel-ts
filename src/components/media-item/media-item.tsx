@@ -1,14 +1,14 @@
 import { FC } from "react";
 import { THeroComics } from "../../utils/types";
-import styles from "./comics-item.module.scss";
+import styles from "./media-item.module.scss";
 
-const ComicsItem: FC<THeroComics> = (item) => {
+const MediaItem: FC<THeroComics> = (item) => {
   const { title, description, thumbnail } = item;
   return (
-    <div className={styles.comicsItem}>
+    <div className={styles.MediaItem}>
       <div className={styles.comicsImgWrapper}>
         <div
-          className={styles.comicsItemImg}
+          className={styles.MediaItemImg}
           style={{
             backgroundImage: `url(${
               thumbnail.path + "." + thumbnail.extension
@@ -27,4 +27,4 @@ const ComicsItem: FC<THeroComics> = (item) => {
   );
 };
 
-export default ComicsItem;
+export default MediaItem;
