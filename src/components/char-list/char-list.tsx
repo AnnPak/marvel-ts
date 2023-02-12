@@ -4,7 +4,6 @@ import { THero } from "../../utils/types";
 import { PrimaryButton } from "../buttons/buttons";
 import CharItem from "../char-item/char-item";
 import styles from "./char-list.module.scss";
-import { nanoid } from "nanoid";
 
 const CharList = () => {
   const { heroes, currentOffset } = useAppSelector(
@@ -19,13 +18,13 @@ const CharList = () => {
   return (
     <>
       <div className={styles.charlist}>
-        {heroes &&
+        {heroes?.length &&
           heroes?.map((hero: THero) => (
             <CharItem
               id={hero.id}
               name={hero.name}
               description={hero.description}
-              key={nanoid()}
+              key={hero.id}
               comics={hero.comics}
               series={hero.series}
               urls={hero.urls}

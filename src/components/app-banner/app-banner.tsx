@@ -4,12 +4,12 @@ import styles from "./app-banner.module.scss";
 import appStyles from "../app/app.module.scss";
 import { PrimaryButtonLink } from "../buttons/buttons";
 import { RootState, useAppDispatch, useAppSelector } from "../../store";
-import { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { fetchHero } from "../../store/heroes";
 import { THero } from "../../utils/types";
 import { Link } from "react-router-dom";
 
-const AppBanner = () => {
+const AppBanner1 = () => {
   const dispatch = useAppDispatch();
   const [char, setChar] = useState<THero | null>(null);
 
@@ -73,5 +73,5 @@ export const AppBannerComponent: FC<{ char: THero }> = ({ char }) => {
     </div>
   );
 };
-
+const AppBanner = React.memo(AppBanner1);
 export default AppBanner;
