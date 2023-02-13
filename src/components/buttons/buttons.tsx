@@ -3,14 +3,19 @@ import { Link } from "react-router-dom";
 
 import styles from "./buttons.module.scss";
 import { TPrimaryButton } from "../../utils/types";
+import classNames from "classnames";
 
-export const PrimaryButton: FC<TPrimaryButton> = ({ text, onClickFunc }) => {
+export const PrimaryButton: FC<TPrimaryButton> = ({
+  text,
+  onClickFunc,
+  isLoading,
+}) => {
   return (
     <button
-      className={styles.primaryBtn}
+      className={classNames(styles.primaryBtn, isLoading && styles.loadingBtn)}
       onClick={onClickFunc ? () => onClickFunc() : undefined}
     >
-      <svg viewBox="0 0 180 60" className="border">
+      <svg viewBox="0 0 180 60" className={styles.borderSvg}>
         <polyline points="179,1 179,59 1,59 1,1 179,1" className="bg-line" />
         <polyline points="179,1 179,59 1,59 1,1 179,1" className="hl-line" />
       </svg>

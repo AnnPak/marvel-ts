@@ -48,6 +48,7 @@ export type TInitialHeroState = {
 
   showMoreHeroesLoading: boolean;
   showMoreHeroesError: boolean;
+  showMoreHeroesSucces: boolean;
 };
 
 export type TInitialComicsState = {
@@ -58,8 +59,8 @@ export type TInitialComicsState = {
 };
 
 export type TInitialSeriesState = {
-  fetchHeroSeriesLoading: boolean;
-  fetchHeroSeriesError: boolean;
+  fetchSeriesLoading: boolean;
+  fetchSeriesError: boolean;
 
   heroSeries: THeroComics[] | [];
 };
@@ -82,6 +83,7 @@ export type TCharItem = Pick<
 >;
 
 export type TPrimaryButton = {
-  text: string;
+  text: string | JSX.Element;
+  isLoading?: boolean;
   onClickFunc?: () => void;
 };

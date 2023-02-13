@@ -5,8 +5,8 @@ import { request } from "./../utils/request";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState: TInitialSeriesState = {
-  fetchHeroSeriesLoading: false,
-  fetchHeroSeriesError: false,
+  fetchSeriesLoading: false,
+  fetchSeriesError: false,
 
   heroSeries: [],
 };
@@ -26,17 +26,17 @@ const seriesSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchHeroSeries.pending, (state) => {
-        state.fetchHeroSeriesLoading = false;
-        state.fetchHeroSeriesError = false;
+        state.fetchSeriesLoading = false;
+        state.fetchSeriesError = false;
       })
       .addCase(fetchHeroSeries.fulfilled, (state, action) => {
-        state.fetchHeroSeriesLoading = false;
-        state.fetchHeroSeriesError = false;
+        state.fetchSeriesLoading = false;
+        state.fetchSeriesError = false;
         state.heroSeries = action.payload.data.results;
       })
       .addCase(fetchHeroSeries.rejected, (state) => {
-        state.fetchHeroSeriesLoading = false;
-        state.fetchHeroSeriesError = false;
+        state.fetchSeriesLoading = false;
+        state.fetchSeriesError = false;
       });
   },
 });

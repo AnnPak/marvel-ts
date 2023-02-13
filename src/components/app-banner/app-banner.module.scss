@@ -100,6 +100,7 @@
 .heroDetailPage {
   .bannerChar {
     height: 69vh;
+    transition: all 0.3s ease-in-out;
   }
   img {
     max-height: 649px;
@@ -124,4 +125,9 @@
   .bannerCharBtns {
     display: none;
   }
+}
+
+.loaderContainer {
+  display: flex;
+  justify-content: center;
 }

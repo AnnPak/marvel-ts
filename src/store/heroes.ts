@@ -9,6 +9,7 @@ const initialState: TInitialHeroState = {
   fetchHeroesError: false,
 
   showMoreHeroesLoading: false,
+  showMoreHeroesSucces: false,
   showMoreHeroesError: false,
 
   fetchHeroLoading: false,
@@ -74,10 +75,12 @@ const heroSlice = createSlice({
       .addCase(showMoreHeroes.pending, (state) => {
         state.showMoreHeroesLoading = true;
         state.showMoreHeroesError = false;
+        state.showMoreHeroesSucces = false;
       })
       .addCase(showMoreHeroes.fulfilled, (state, action) => {
         state.showMoreHeroesLoading = false;
         state.showMoreHeroesError = false;
+        state.showMoreHeroesSucces = true;
 
         state.heroes = state.heroes
           ? [...state.heroes, ...action.payload.data.results]
@@ -87,6 +90,7 @@ const heroSlice = createSlice({
       .addCase(showMoreHeroes.rejected, (state) => {
         state.showMoreHeroesLoading = false;
         state.showMoreHeroesError = true;
+        state.showMoreHeroesSucces = false;
       })
 
       .addCase(fetchHero.pending, (state) => {

@@ -8,12 +8,14 @@ import { FC, useEffect, useState } from "react";
 import { fetchHero } from "../../store/heroes";
 import { THero } from "../../utils/types";
 import { Link } from "react-router-dom";
+import { CircleLoader } from "../loader/loader";
+import masrvelImg from "../../assets/marvel.jpg";
 
 const AppBanner = () => {
   const dispatch = useAppDispatch();
   const [char, setChar] = useState<THero | null>(null);
 
-  const { hero, fetchHeroLoading, fetchHeroError } = useAppSelector(
+  const { hero, fetchHeroLoading } = useAppSelector(
     (store: RootState) => store.heroes
   );
 
@@ -24,13 +26,39 @@ const AppBanner = () => {
     return () => {
       clearInterval(timerId);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     hero && setChar(hero[0]);
   }, [hero]);
 
-  return <>{char && <AppBannerComponent char={char} />}</>;
+  return (
+    <>
+      {char && !fetchHeroLoading && <AppBannerComponent char={char} />}
+      {fetchHeroLoading && <AppBannerLoading />}
+    </>
+  );
+};
+
+export const AppBannerLoading = () => {
+  return (
+    <div
+      className={styles.bannerChar}
+      style={{
+        backgroundImage: `url(${masrvelImg})`,
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className={styles.blurBlock}>
+        <div
+          className={classNames(appStyles.container, styles.loaderContainer)}
+        >
+          <CircleLoader />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export const AppBannerComponent: FC<{ char: THero }> = ({ char }) => {
