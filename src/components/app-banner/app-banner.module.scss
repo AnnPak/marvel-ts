@@ -3,6 +3,15 @@
   height: 59vh;
   background-size: cover;
   background-position: center 36%;
+  transition: all 0.3s ease-in-out;
+  -webkit-animation: zoom-a 15s linear infinite alternate;
+  /* Safari 4+ */
+  -moz-animation: zoom-a 15s linear infinite alternate;
+  /* Fx 5+ */
+  -o-animation: zoom-a 15s linear infinite alternate;
+  /* Opera 12+ */
+  animation: zoom-a 15s linear infinite alternate;
+  /* IE 10+, Fx 29+ */
 }
 
 .blurBlock {
@@ -100,7 +109,6 @@
 .heroDetailPage {
   .bannerChar {
     height: 69vh;
-    transition: all 0.3s ease-in-out;
   }
   img {
     max-height: 649px;
@@ -111,16 +119,6 @@
     img {
       transform: none;
     }
-  }
-  .bannerChar {
-    -webkit-animation: zoom-a 15s linear infinite alternate;
-    /* Safari 4+ */
-    -moz-animation: zoom-a 15s linear infinite alternate;
-    /* Fx 5+ */
-    -o-animation: zoom-a 15s linear infinite alternate;
-    /* Opera 12+ */
-    animation: zoom-a 15s linear infinite alternate;
-    /* IE 10+, Fx 29+ */
   }
   .bannerCharBtns {
     display: none;

@@ -92,8 +92,8 @@ export const AppBannerComponent: FC<{ char: THero }> = ({ char }) => {
                 : "There is no description for this character"}
             </p>
             <div className={styles.bannerCharBtns}>
-              <PrimaryButtonLink link="/" text="Info" />
-              <PrimaryButtonLink link="/" text="Wiki" />
+              <PrimaryButtonLink link={`hero/${char.id}`} text="Info" />
+              <PrimaryButtonLink link={char.urls[1].url} text="Wiki" />
             </div>
           </div>
         </div>
