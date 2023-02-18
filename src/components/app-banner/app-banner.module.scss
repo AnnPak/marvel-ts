@@ -4,14 +4,7 @@
   background-size: cover;
   background-position: center 36%;
   transition: all 0.3s ease-in-out;
-  -webkit-animation: zoom-a 15s linear infinite alternate;
-  /* Safari 4+ */
-  -moz-animation: zoom-a 15s linear infinite alternate;
-  /* Fx 5+ */
-  -o-animation: zoom-a 15s linear infinite alternate;
-  /* Opera 12+ */
   animation: zoom-a 15s linear infinite alternate;
-  /* IE 10+, Fx 29+ */
 }
 
 .blurBlock {
@@ -37,6 +30,7 @@
 .bannerContainer {
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .bannerCharName {
@@ -58,6 +52,9 @@
 
 .bannerImgWrap {
   overflow: hidden;
+  height: 100%;
+  display: flex;
+  align-items: center;
   img {
     transition: all 5s ease-in-out;
   }
@@ -111,9 +108,10 @@
     height: 69vh;
   }
   img {
-    max-height: 649px;
     width: auto;
     transition: none;
+    height: auto;
+    max-height: 80%;
   }
   a:hover {
     img {

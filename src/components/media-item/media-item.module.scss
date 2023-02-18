@@ -9,7 +9,11 @@
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  &:hover {
+  &:hover,
+  &:focus,
+  &:visited,
+  &:focus-visible,
+  &:target {
     .MediaItemImg {
       transform: scale(1.25) rotate(2deg);
     }

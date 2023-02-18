@@ -70,7 +70,7 @@ const Modal: FC<TModal> = ({ isOpen, modalItem }) => {
                             <span>{prices[0].price}$</span>
                           </li>
                         )}
-                        {textObjects[0].language && (
+                        {textObjects[0]?.language && (
                           <li>
                             <span>Language:</span>
                             <span>{textObjects[0].language}</span>

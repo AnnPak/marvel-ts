@@ -1,4 +1,3 @@
-import { nanoid } from "nanoid";
 import MediaItem from "../media-item/media-item";
 import { FC } from "react";
 import { THeroComics } from "../../utils/types";
@@ -21,7 +20,7 @@ const MediaList: FC<{
       {heroMedia &&
         heroMedia?.map((item) => (
           <MediaItem
-            key={nanoid()}
+            key={item.id}
             id={item.id}
             thumbnail={item.thumbnail}
             title={item.title}
