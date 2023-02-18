@@ -17,12 +17,6 @@ const AppHeader = () => {
         <ul>
           <li className={styles.navLink}>Characters</li>/
           <li className={styles.navLink}>Comics</li>
-          {/* <NavLink className={styles.navLink} to={"/characters"}>
-            Characters
-          </NavLink>
-          <NavLink className={styles.navLink} to={"/comics"}>
-            Comics
-          </NavLink> */}
         </ul>
       </nav>
     </header>

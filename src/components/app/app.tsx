@@ -3,7 +3,7 @@ import AppHeader from "../app-header/app-header";
 
 import { HeroPage, Home } from "../pages/pages";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { fetchHeroes } from "../../store/heroes";
+import { fetchHero, fetchHeroes } from "../../store/heroes";
 import { useAppDispatch } from "../../store";
 
 const App = () => {
@@ -11,6 +11,17 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchHeroes());
+
+    const timerGetHero = setTimeout(() => {
+      dispatch(fetchHero());
+    }, 2000);
+
+    const intervalGetHero = setInterval(() => dispatch(fetchHero()), 26000);
+
+    return () => {
+      clearInterval(intervalGetHero);
+      clearTimeout(timerGetHero);
+    };
   }, [dispatch]);
 
   return (

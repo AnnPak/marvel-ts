@@ -3,31 +3,19 @@ import classNames from "classnames";
 import styles from "./app-banner.module.scss";
 import appStyles from "../app/app.module.scss";
 import { PrimaryButtonLink } from "../buttons/buttons";
-import { RootState, useAppDispatch, useAppSelector } from "../../store";
+import { RootState, useAppSelector } from "../../store";
 import { FC, useEffect, useState } from "react";
-import { fetchHero } from "../../store/heroes";
 import { THero } from "../../utils/types";
 import { Link } from "react-router-dom";
 import { CircleLoader } from "../loader/loader";
 import masrvelImg from "../../assets/marvel.jpg";
 
 const AppBanner = () => {
-  const dispatch = useAppDispatch();
   const [char, setChar] = useState<THero | null>(null);
 
   const { hero, fetchHeroLoading } = useAppSelector(
     (store: RootState) => store.heroes
   );
-
-  useEffect(() => {
-    dispatch(fetchHero());
-    const timerId = setInterval(() => dispatch(fetchHero()), 26000);
-
-    return () => {
-      clearInterval(timerId);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     hero && setChar(hero[0]);
@@ -36,7 +24,7 @@ const AppBanner = () => {
   return (
     <>
       {char && !fetchHeroLoading && <AppBannerComponent char={char} />}
-      {fetchHeroLoading && <AppBannerLoading />}
+      {(!char || fetchHeroLoading) && <AppBannerLoading />}
     </>
   );
 };
