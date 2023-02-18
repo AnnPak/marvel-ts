@@ -10,6 +10,9 @@ const initialState: TInitialMediaState = {
   fetchSeriesLoading: false,
   fetchSeriesError: false,
 
+  getMediaItemLoading: false,
+  getMediaItemError: false,
+
   heroSeries: [],
   heroComics: [],
 
@@ -32,13 +35,19 @@ export const fetchHeroSeries = createAsyncThunk(
   }
 );
 
+export const getMediaItem = createAsyncThunk(
+  "media/getMediaItem",
+  async (props: { mediaId: number; mediaType: "comics" | "series" }) => {
+    const { mediaId, mediaType } = props;
+    const requestUrl = `${API_BASE}${mediaType}/${mediaId}?${API_KEY}`;
+    return await request({ method: "GET", url: requestUrl });
+  }
+);
+
 const comicsSlice = createSlice({
   name: "media",
   initialState,
   reducers: {
-    addElementToModal: (state, action) => {
-      state.modalItem = [action.payload];
-    },
     deleteModalElement: (state) => {
       state.modalItem = [];
     },
@@ -48,6 +57,7 @@ const comicsSlice = createSlice({
       .addCase(fetchComics.pending, (state) => {
         state.fetchComicsLoading = true;
         state.fetchComicsError = false;
+        state.heroComics = [];
       })
       .addCase(fetchComics.fulfilled, (state, action) => {
         state.fetchComicsLoading = false;
@@ -59,9 +69,11 @@ const comicsSlice = createSlice({
         state.fetchComicsLoading = false;
         state.fetchComicsError = true;
       })
+
       .addCase(fetchHeroSeries.pending, (state) => {
         state.fetchSeriesLoading = false;
         state.fetchSeriesError = false;
+        state.heroSeries = [];
       })
       .addCase(fetchHeroSeries.fulfilled, (state, action) => {
         state.fetchSeriesLoading = false;
@@ -71,11 +83,27 @@ const comicsSlice = createSlice({
       .addCase(fetchHeroSeries.rejected, (state) => {
         state.fetchSeriesLoading = false;
         state.fetchSeriesError = false;
+      })
+
+      .addCase(getMediaItem.pending, (state) => {
+        state.getMediaItemLoading = true;
+        state.getMediaItemError = false;
+        state.modalItem = [];
+      })
+      .addCase(getMediaItem.fulfilled, (state, action) => {
+        state.getMediaItemLoading = false;
+        state.getMediaItemError = false;
+
+        state.modalItem = action.payload.data.results;
+      })
+      .addCase(getMediaItem.rejected, (state) => {
+        state.getMediaItemLoading = false;
+        state.getMediaItemError = true;
       });
   },
 });
 
 const { actions, reducer } = comicsSlice;
-export const { addElementToModal, deleteModalElement } = actions;
+export const { deleteModalElement } = actions;
 
 export default reducer;

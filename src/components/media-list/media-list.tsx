@@ -4,13 +4,16 @@ import { FC } from "react";
 import { THeroComics } from "../../utils/types";
 import styles from "./media-list.module.scss";
 import { useAppDispatch } from "../../store";
-import { addElementToModal } from "../../store/media";
+import { getMediaItem } from "../../store/media";
 
-const MediaList: FC<{ heroMedia: THeroComics[] }> = ({ heroMedia }) => {
+const MediaList: FC<{
+  heroMedia: THeroComics[];
+  type: "comics" | "series";
+}> = ({ heroMedia, type }) => {
   const dispatch = useAppDispatch();
 
-  const showModal = (item: THeroComics) => {
-    dispatch(addElementToModal(item));
+  const showModal = (itemId: number, type: "comics" | "series") => {
+    dispatch(getMediaItem({ mediaId: itemId, mediaType: type }));
   };
 
   return (
@@ -23,7 +26,7 @@ const MediaList: FC<{ heroMedia: THeroComics[] }> = ({ heroMedia }) => {
             thumbnail={item.thumbnail}
             title={item.title}
             description={item.description}
-            onClick={() => showModal(item)}
+            onClick={() => showModal(item.id, type)}
           />
         ))}
     </div>

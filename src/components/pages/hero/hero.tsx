@@ -57,7 +57,7 @@ const HeroPage = () => {
           <div className={styles.comicsBlock}>
             <h2>Comics:</h2>
             {heroComics.length ? (
-              <MediaList heroMedia={heroComics} />
+              <MediaList heroMedia={heroComics} type="comics" />
             ) : (
               "There is no comics for this character "
             )}
@@ -74,7 +74,7 @@ const HeroPage = () => {
           <div className={styles.comicsBlock}>
             <h2>Series:</h2>
             {heroSeries.length ? (
-              <MediaList heroMedia={heroSeries} />
+              <MediaList heroMedia={heroSeries} type="series" />
             ) : (
               "There is no series for this character "
             )}
@@ -82,7 +82,10 @@ const HeroPage = () => {
         )}
       </section>
 
-      <Modal isOpen={!!modalItem.length} />
+      <Modal
+        isOpen={!!modalItem.length}
+        {...(modalItem.length ? { modalItem: modalItem } : {})}
+      />
     </section>
   );
 };

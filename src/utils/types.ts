@@ -51,15 +51,42 @@ export type TInitialHeroState = {
   showMoreHeroesSucces: boolean;
 };
 
+export type ComicsItem = THeroComics & {
+  dates: {
+    type: string;
+    date: Date;
+  }[];
+  prices: {
+    type: string;
+    price: number;
+  }[];
+  images:
+    | {
+        path: string;
+        extension: string;
+      }[]
+    | [];
+
+  textObjects: {
+    type: string;
+    language: string;
+    text: string;
+  }[];
+};
+
 export type TInitialMediaState = {
   fetchComicsLoading: boolean;
   fetchComicsError: boolean;
+
   fetchSeriesLoading: boolean;
   fetchSeriesError: boolean;
 
+  getMediaItemLoading: boolean;
+  getMediaItemError: boolean;
+
   heroSeries: THeroComics[] | [];
   heroComics: THeroComics[] | [];
-  modalItem: THeroComics[] | [];
+  modalItem: (ComicsItem & THeroComics)[] | [];
 };
 
 export type THeroComics = {
@@ -83,4 +110,9 @@ export type TPrimaryButton = {
   text: string | JSX.Element;
   isLoading?: boolean;
   onClickFunc?: () => void;
+};
+
+export type TModal = {
+  isOpen: boolean;
+  modalItem?: ComicsItem[];
 };
