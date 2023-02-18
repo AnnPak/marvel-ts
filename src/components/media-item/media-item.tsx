@@ -2,10 +2,10 @@ import { FC } from "react";
 import { THeroComics } from "../../utils/types";
 import styles from "./media-item.module.scss";
 
-const MediaItem: FC<THeroComics> = (item) => {
-  const { title, description, thumbnail } = item;
+const MediaItem: FC<THeroComics & { onClick: () => void }> = (props) => {
+  const { title, description, thumbnail, onClick } = props;
   return (
-    <div className={styles.MediaItem}>
+    <div className={styles.MediaItem} onClick={() => onClick()}>
       <div className={styles.comicsImgWrapper}>
         <div
           className={styles.MediaItemImg}

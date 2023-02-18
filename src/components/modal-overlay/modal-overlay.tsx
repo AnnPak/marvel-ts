@@ -1,9 +1,19 @@
 import { FC } from "react";
 import styles from "./modal-overlay.module.scss";
+import classNames from "classnames";
 
-const ModalOverlay: FC<{ closeModal: () => void }> = ({ closeModal }) => {
+const ModalOverlay: FC<{ closeModal: () => void; isOpen: boolean }> = ({
+  closeModal,
+  isOpen,
+}) => {
   return (
-    <section className={styles.modalOverlay} onClick={() => closeModal()} />
+    <section
+      className={classNames(
+        styles.modalOverlay,
+        isOpen && styles.showModalOverlay
+      )}
+      onClick={() => closeModal()}
+    />
   );
 };
 

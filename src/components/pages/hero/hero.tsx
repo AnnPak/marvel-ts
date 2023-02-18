@@ -6,16 +6,16 @@ import {
   AppBannerComponent,
   AppBannerLoading,
 } from "../../app-banner/app-banner";
-import ComicsList from "../../media-list/media-list";
+import MediaList from "../../media-list/media-list";
 import { fetchHero } from "../../../store/heroes";
-import { fetchHeroSeries } from "../../../store/series";
-import { fetchComics } from "../../../store/comics";
+import { fetchComics, fetchHeroSeries } from "../../../store/media";
 import { CircleLoader } from "../../loader/loader";
 
 import appStyles from "../../app/app.module.scss";
 import styles from "./hero.module.scss";
 import loaderStyles from "../../loader/loader.module.scss";
 import bannerStyles from "../../app-banner/app-banner.module.scss";
+import Modal from "../../modal/modal";
 
 const HeroPage = () => {
   const { heroId } = useParams();
@@ -23,16 +23,13 @@ const HeroPage = () => {
     (store: RootState) => store.heroes
   );
 
-  const { fetchComicsLoading } = useAppSelector(
-    (store: RootState) => store.comics
-  );
-
-  const { fetchSeriesLoading } = useAppSelector(
-    (store: RootState) => store.series
-  );
-
-  const { heroComics } = useAppSelector((store: RootState) => store.comics);
-  const { heroSeries } = useAppSelector((store: RootState) => store.series);
+  const {
+    heroComics,
+    heroSeries,
+    fetchComicsLoading,
+    fetchSeriesLoading,
+    modalItem,
+  } = useAppSelector((store: RootState) => store.media);
   const [currentHero, setCurrentHero] = useState<THero | null>(null);
 
   const dispatch = useAppDispatch();
@@ -60,7 +57,7 @@ const HeroPage = () => {
           <div className={styles.comicsBlock}>
             <h2>Comics:</h2>
             {heroComics.length ? (
-              <ComicsList heroMedia={heroComics} />
+              <MediaList heroMedia={heroComics} />
             ) : (
               "There is no comics for this character "
             )}
@@ -77,13 +74,15 @@ const HeroPage = () => {
           <div className={styles.comicsBlock}>
             <h2>Series:</h2>
             {heroSeries.length ? (
-              <ComicsList heroMedia={heroSeries} />
+              <MediaList heroMedia={heroSeries} />
             ) : (
               "There is no series for this character "
             )}
           </div>
         )}
       </section>
+
+      <Modal isOpen={!!modalItem.length} />
     </section>
   );
 };

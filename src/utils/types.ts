@@ -51,18 +51,15 @@ export type TInitialHeroState = {
   showMoreHeroesSucces: boolean;
 };
 
-export type TInitialComicsState = {
+export type TInitialMediaState = {
   fetchComicsLoading: boolean;
   fetchComicsError: boolean;
-
-  heroComics: THeroComics[] | [];
-};
-
-export type TInitialSeriesState = {
   fetchSeriesLoading: boolean;
   fetchSeriesError: boolean;
 
   heroSeries: THeroComics[] | [];
+  heroComics: THeroComics[] | [];
+  modalItem: THeroComics[] | [];
 };
 
 export type THeroComics = {

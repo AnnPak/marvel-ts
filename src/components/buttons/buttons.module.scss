@@ -53,9 +53,11 @@
   right: -42px;
   top: -20px;
   cursor: pointer;
+  background: none;
+  border: none;
   svg {
     transition: all 0.25s;
-    opacity: 0.25;
+    opacity: 0.4;
   }
 }
 
