@@ -52,7 +52,7 @@ export type TInitialHeroState = {
 };
 
 export type ComicsItem = THeroComics & {
-  type: "comics" | "series";
+  type: "comics";
   dates: {
     type: string;
     date: Date;
@@ -76,10 +76,10 @@ export type ComicsItem = THeroComics & {
 };
 
 export type SeriesItem = THeroComics & {
-  type?: "comics" | "series";
-  startYear?: string;
-  endYear?: string;
-  characters?: {
+  type: "series";
+  startYear: string;
+  endYear: string;
+  characters: {
     available: number;
     collectionURI: string;
     items: {
@@ -101,7 +101,8 @@ export type TInitialMediaState = {
 
   heroSeries: THeroComics[] | [];
   heroComics: THeroComics[] | [];
-  modalItem: ComicsItem[];
+  modalComics: ComicsItem[] | [];
+  modalSeries: SeriesItem[] | [];
 };
 
 export type THeroComics = {

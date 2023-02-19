@@ -17,6 +17,7 @@ import loaderStyles from "../../loader/loader.module.scss";
 import bannerStyles from "../../app-banner/app-banner.module.scss";
 import Modal from "../../modal/modal";
 import ModalComics from "../../modal-comics/modal-comics";
+import ModalSeries from "../../modal-series/modal-series";
 
 const HeroPage = () => {
   const { heroId } = useParams();
@@ -24,7 +25,9 @@ const HeroPage = () => {
     (store: RootState) => store.heroes
   );
 
-  const { modalItem } = useAppSelector((store: RootState) => store.media);
+  const { modalComics, modalSeries } = useAppSelector(
+    (store: RootState) => store.media
+  );
 
   const [currentHero, setCurrentHero] = useState<THero | null>(null);
 
@@ -51,13 +54,9 @@ const HeroPage = () => {
 
       {currentHero && <HeroMediaItems />}
 
-      <Modal
-        isOpen={!!modalItem.length}
-        {...(modalItem.length ? { modalItem: modalItem } : {})}
-      >
-        {modalItem[0] && modalItem[0]?.type === "comics" && (
-          <ModalComics modalItem={modalItem} />
-        )}
+      <Modal isOpen={!!modalSeries.length || !!modalComics.length}>
+        {modalComics[0] && <ModalComics modalItem={modalComics} />}
+        {modalSeries[0] && <ModalSeries modalItem={modalSeries} />}
       </Modal>
     </section>
   );

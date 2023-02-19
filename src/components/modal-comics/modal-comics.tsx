@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { ComicsItem } from "../../utils/types";
 
-import styles from "./modal-comics.module.scss";
+import styles from "../modal/modal.module.scss";
 import moment from "moment";
 import { Slide } from "react-slideshow-image";
 

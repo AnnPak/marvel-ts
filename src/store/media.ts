@@ -16,7 +16,8 @@ const initialState: TInitialMediaState = {
   heroSeries: [],
   heroComics: [],
 
-  modalItem: [],
+  modalComics: [],
+  modalSeries: [],
 };
 
 export const fetchComics = createAsyncThunk(
@@ -49,7 +50,8 @@ const comicsSlice = createSlice({
   initialState,
   reducers: {
     deleteModalElement: (state) => {
-      state.modalItem = [];
+      state.modalComics = [];
+      state.modalSeries = [];
     },
   },
   extraReducers: (builder) => {
@@ -88,16 +90,23 @@ const comicsSlice = createSlice({
       .addCase(getMediaItem.pending, (state) => {
         state.getMediaItemLoading = true;
         state.getMediaItemError = false;
-        state.modalItem = [];
       })
       .addCase(getMediaItem.fulfilled, (state, action) => {
         state.getMediaItemLoading = false;
         state.getMediaItemError = false;
+
+        const mediaType = action.meta.arg.mediaType;
         const type = {
           type: action.meta.arg.mediaType,
         };
-        const comicsDate = action.payload.data.results[0];
-        state.modalItem = [Object.assign(comicsDate, type)];
+
+        const mediaDate = action.payload.data.results[0];
+
+        if (mediaType === "comics") {
+          state.modalComics = [Object.assign(mediaDate, type)];
+        } else if (mediaType === "series") {
+          state.modalSeries = [Object.assign(mediaDate, type)];
+        }
       })
       .addCase(getMediaItem.rejected, (state) => {
         state.getMediaItemLoading = false;
