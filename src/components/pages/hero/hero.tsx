@@ -16,6 +16,7 @@ import styles from "./hero.module.scss";
 import loaderStyles from "../../loader/loader.module.scss";
 import bannerStyles from "../../app-banner/app-banner.module.scss";
 import Modal from "../../modal/modal";
+import ModalComics from "../../modal-comics/modal-comics";
 
 const HeroPage = () => {
   const { heroId } = useParams();
@@ -53,7 +54,11 @@ const HeroPage = () => {
       <Modal
         isOpen={!!modalItem.length}
         {...(modalItem.length ? { modalItem: modalItem } : {})}
-      />
+      >
+        {modalItem[0] && modalItem[0]?.type === "comics" && (
+          <ModalComics modalItem={modalItem} />
+        )}
+      </Modal>
     </section>
   );
 };

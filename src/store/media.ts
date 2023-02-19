@@ -93,8 +93,11 @@ const comicsSlice = createSlice({
       .addCase(getMediaItem.fulfilled, (state, action) => {
         state.getMediaItemLoading = false;
         state.getMediaItemError = false;
-
-        state.modalItem = action.payload.data.results;
+        const type = {
+          type: action.meta.arg.mediaType,
+        };
+        const comicsDate = action.payload.data.results[0];
+        state.modalItem = [Object.assign(comicsDate, type)];
       })
       .addCase(getMediaItem.rejected, (state) => {
         state.getMediaItemLoading = false;

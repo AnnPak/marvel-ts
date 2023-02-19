@@ -52,26 +52,41 @@ export type TInitialHeroState = {
 };
 
 export type ComicsItem = THeroComics & {
+  type: "comics" | "series";
   dates: {
     type: string;
     date: Date;
   }[];
-  prices: {
+  prices?: {
     type: string;
     price: number;
   }[];
-  images:
+  images?:
     | {
         path: string;
         extension: string;
       }[]
     | [];
 
-  textObjects: {
+  textObjects?: {
     type: string;
     language: string;
     text: string;
   }[];
+};
+
+export type SeriesItem = THeroComics & {
+  type?: "comics" | "series";
+  startYear?: string;
+  endYear?: string;
+  characters?: {
+    available: number;
+    collectionURI: string;
+    items: {
+      resourceURI: string;
+      name: string;
+    };
+  };
 };
 
 export type TInitialMediaState = {
@@ -86,7 +101,7 @@ export type TInitialMediaState = {
 
   heroSeries: THeroComics[] | [];
   heroComics: THeroComics[] | [];
-  modalItem: (ComicsItem & THeroComics)[] | [];
+  modalItem: ComicsItem[];
 };
 
 export type THeroComics = {
@@ -114,5 +129,4 @@ export type TPrimaryButton = {
 
 export type TModal = {
   isOpen: boolean;
-  modalItem?: ComicsItem[];
 };
