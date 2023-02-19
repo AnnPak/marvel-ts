@@ -10,9 +10,11 @@
   overflow-y: auto;
   outline: 0;
   visibility: hidden;
-  transition: visibility 0.3s linear;
+  opacity: 0;
+  transition: opacity 1s linear;
 }
 
 .showModalOverlay {
+  opacity: 1;
   visibility: visible;
 }
