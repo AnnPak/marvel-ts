@@ -1,8 +1,8 @@
 type TRequest = {
-  method?: 'GET' | 'POST',
-  url: string,
-  body?: BodyInit,
-}
+  method?: "GET" | "POST";
+  url: string;
+  body?: BodyInit;
+};
 
 export const request = async ({ method, url, body }: TRequest) => {
   const requestOptions: RequestInit = {
@@ -12,11 +12,9 @@ export const request = async ({ method, url, body }: TRequest) => {
   };
 
   const response = await fetch(url, requestOptions);
-  console.log(response);
 
   if (!response.ok) {
     throw new Error(`Could not fetch ${url}, status: ${response.status}`);
   }
   return await response.json();
-
-}
+};

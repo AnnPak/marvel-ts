@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import heroes from "./heroes";
 import media from "./media";
+import modal from "./modal";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 
 const store = configureStore({
-  reducer: { heroes, media },
+  reducer: { heroes, media, modal },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
   devTools: process.env.NODE_ENV !== "production",
 });

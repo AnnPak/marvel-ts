@@ -1,34 +1,39 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { RootState, useAppDispatch, useAppSelector } from "../../../store";
+import { fetchHero } from "../../../store/heroes";
+import {
+  deleteModalElement,
+  fetchComics,
+  fetchHeroSeries,
+} from "../../../store/media";
+
 import { THero } from "../../../utils/types";
 import {
   AppBannerComponent,
   AppBannerLoading,
 } from "../../app-banner/app-banner";
 import MediaList from "../../media-list/media-list";
-import { fetchHero } from "../../../store/heroes";
-import { fetchComics, fetchHeroSeries } from "../../../store/media";
 import { CircleLoader } from "../../loader/loader";
+import Modal from "../../modal/modal";
+import ModalComics from "../../modal-comics/modal-comics";
+import ModalSeries from "../../modal-series/modal-series";
 
 import appStyles from "../../app/app.module.scss";
 import styles from "./hero.module.scss";
 import loaderStyles from "../../loader/loader.module.scss";
 import bannerStyles from "../../app-banner/app-banner.module.scss";
-import Modal from "../../modal/modal";
-import ModalComics from "../../modal-comics/modal-comics";
-import ModalSeries from "../../modal-series/modal-series";
 
 const HeroPage = () => {
   const { heroId } = useParams();
+
   const { hero, fetchHeroLoading } = useAppSelector(
     (store: RootState) => store.heroes
   );
-
   const { modalComics, modalSeries } = useAppSelector(
     (store: RootState) => store.media
   );
-
+  const { isModalShow } = useAppSelector((store: RootState) => store.modal);
   const [currentHero, setCurrentHero] = useState<THero | null>(null);
 
   const dispatch = useAppDispatch();
@@ -36,14 +41,18 @@ const HeroPage = () => {
   useEffect(() => {
     if (heroId) {
       dispatch(fetchHero(+heroId));
-      dispatch(fetchComics(+heroId));
       dispatch(fetchHeroSeries(+heroId));
+      dispatch(fetchComics(+heroId));
     }
   }, [heroId, dispatch]);
 
   useEffect(() => {
     hero && setCurrentHero(hero[0]);
   }, [hero]);
+
+  const deleteModalElementFunc = () => {
+    dispatch(deleteModalElement());
+  };
 
   return (
     <section className={bannerStyles.heroDetailPage}>
@@ -52,9 +61,9 @@ const HeroPage = () => {
       )}
       {fetchHeroLoading && <AppBannerLoading />}
 
-      {currentHero && <HeroMediaItems />}
+      <HeroMediaItems />
 
-      <Modal isOpen={!!modalSeries.length || !!modalComics.length}>
+      <Modal isOpen={isModalShow} deleteModalElement={deleteModalElementFunc}>
         {modalComics[0] && <ModalComics modalItem={modalComics} />}
         {modalSeries[0] && <ModalSeries modalItem={modalSeries} />}
       </Modal>
@@ -68,32 +77,39 @@ const HeroMediaItems = () => {
 
   return (
     <section className={appStyles.container}>
-      {heroComics && (
-        <div className={styles.comicsBlock}>
-          <h2>Comics:</h2>
-          {heroComics.length ? (
-            <MediaList heroMedia={heroComics} type="comics" />
-          ) : (
-            "There is no comics for this character "
-          )}
-        </div>
-      )}
+      <div className={styles.comicsBlock}>
+        <h2>Comics:</h2>
+        {!!heroComics?.length && (
+          <MediaList heroMedia={heroComics} type="comics" />
+        )}
 
-      {heroSeries && (
-        <div className={styles.comicsBlock}>
-          <h2>Series:</h2>
-          {heroSeries.length ? (
-            <MediaList heroMedia={heroSeries} type="series" />
-          ) : (
-            "There is no series for this character "
-          )}
-        </div>
-      )}
-      {fetchComicsLoading && fetchSeriesLoading && (
-        <div className={loaderStyles.heroesLoading}>
-          <CircleLoader />
-        </div>
-      )}
+        {!heroComics.length && !fetchComicsLoading && (
+          <p>There is no comics for this character</p>
+        )}
+
+        {fetchComicsLoading && (
+          <div className={loaderStyles.heroesLoading}>
+            <CircleLoader />
+          </div>
+        )}
+      </div>
+
+      <div className={styles.comicsBlock}>
+        <h2>Series:</h2>
+        {!!heroSeries?.length && (
+          <MediaList heroMedia={heroSeries} type="series" />
+        )}
+
+        {!heroSeries.length && !fetchSeriesLoading && (
+          <p>There is no comics for this character</p>
+        )}
+
+        {fetchSeriesLoading && (
+          <div className={loaderStyles.heroesLoading}>
+            <CircleLoader />
+          </div>
+        )}
+      </div>
     </section>
   );
 };
