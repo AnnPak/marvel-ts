@@ -3,6 +3,12 @@ body {
   font-family: "Roboto Condensed", "Ubuntu", "Cantarell", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: auto;
+}
+
+body.modal-open {
+  overflow: hidden;
+  padding-right: 8px;
 }
 
 body::-webkit-scrollbar {

@@ -27,7 +27,7 @@ const Modal: FC<PropsWithChildren<TModal>> = ({ isOpen, children }) => {
 
   const closeModal = () => {
     dispatch(deleteModalElement());
-    document.body.style.overflow = "auto";
+    document.body.classList.remove("modal-open");
   };
 
   return createPortal(
