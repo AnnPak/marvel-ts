@@ -68,13 +68,7 @@ export const AppBannerLoading = () => {
 };
 
 export const AppBannerComponent: FC<{ char: THero }> = ({ char }) => {
-  const {
-    thumbnail,
-    name,
-    description = "There is no description for this character",
-    id,
-    urls,
-  } = char;
+  const { thumbnail, name, description, id, urls } = char;
   return (
     <div
       className={styles.bannerChar}
@@ -97,10 +91,17 @@ export const AppBannerComponent: FC<{ char: THero }> = ({ char }) => {
 
           <div className={styles.bannerCharInfo}>
             <h1 className={styles.bannerCharName}>{name}</h1>
-            <p
-              className={styles.bannerCharDescr}
-              dangerouslySetInnerHTML={createHtml(description)}
-            ></p>
+            {description ? (
+              <p
+                className={styles.bannerCharDescr}
+                dangerouslySetInnerHTML={createHtml(description)}
+              ></p>
+            ) : (
+              <p className={styles.bannerCharDescr}>
+                There is no description for this character
+              </p>
+            )}
+
             <div className={styles.bannerCharBtns}>
               <PrimaryButtonLink link={`hero/${id}`} text="Info" />
               <PrimaryButtonLink link={urls[1].url} text="Wiki" />

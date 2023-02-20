@@ -1,14 +1,11 @@
 import React from "react";
-
 import styles from "./app-header.module.scss";
 
 const AppHeader = () => {
   return (
     <header className={styles.headerTitle}>
       <h1>
-        <a className="" href="/">
-          MARVEL
-        </a>
+        <a href="/">MARVEL</a>
         <p>information portal</p>
       </h1>
     </header>
