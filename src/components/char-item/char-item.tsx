@@ -7,7 +7,14 @@ import { createHtml } from "../../utils/utils";
 import style from "./char-item.module.scss";
 
 const CharItem: FC<TCharItem> = (props) => {
-  const { id, name, description, thumbnail, comics, series } = props;
+  const {
+    id,
+    name,
+    description = "There is no description for this character",
+    thumbnail,
+    comics,
+    series,
+  } = props;
 
   return (
     <Link to={`hero/${id}`} className={style.charItem}>
@@ -22,16 +29,10 @@ const CharItem: FC<TCharItem> = (props) => {
         ></div>
 
         <div className={style.charItemInfo}>
-          {description ? (
-            <p
-              className={style.charItemDescr}
-              dangerouslySetInnerHTML={createHtml(description)}
-            ></p>
-          ) : (
-            <p className={style.charItemDescr}>
-              There is no description for this character
-            </p>
-          )}
+          <p
+            className={style.charItemDescr}
+            dangerouslySetInnerHTML={createHtml(description)}
+          ></p>
 
           <div className={style.charItemMediaInfo}>
             <span>Comics: {comics.available}</span>

@@ -11,6 +11,7 @@ import { CircleLoader } from "../loader/loader";
 import masrvelImg from "../../assets/marvel.jpg";
 import styles from "./app-banner.module.scss";
 import appStyles from "../app/app.module.scss";
+import { createHtml } from "../../utils/utils";
 
 const AppBanner = () => {
   const dispatch = useAppDispatch();
@@ -67,13 +68,18 @@ export const AppBannerLoading = () => {
 };
 
 export const AppBannerComponent: FC<{ char: THero }> = ({ char }) => {
+  const {
+    thumbnail,
+    name,
+    description = "There is no description for this character",
+    id,
+    urls,
+  } = char;
   return (
     <div
       className={styles.bannerChar}
       style={{
-        backgroundImage: `url(${
-          char.thumbnail.path + "." + char.thumbnail.extension
-        })`,
+        backgroundImage: `url(${thumbnail.path + "." + thumbnail.extension})`,
         backgroundRepeat: "no-repeat",
       }}
     >
@@ -81,24 +87,23 @@ export const AppBannerComponent: FC<{ char: THero }> = ({ char }) => {
         <div
           className={classNames(appStyles.container, styles.bannerContainer)}
         >
-          <Link to={`hero/${char.id}`} className={styles.bannerImgWrap}>
+          <Link to={`hero/${id}`} className={styles.bannerImgWrap}>
             <img
               className={styles.bannerCharImg}
-              src={char.thumbnail.path + "." + char.thumbnail.extension}
-              alt={char.name}
+              src={thumbnail.path + "." + thumbnail.extension}
+              alt={name}
             />
           </Link>
 
           <div className={styles.bannerCharInfo}>
-            <h1 className={styles.bannerCharName}>{char.name}</h1>
-            <p className={styles.bannerCharDescr}>
-              {char.description
-                ? char.description
-                : "There is no description for this character"}
-            </p>
+            <h1 className={styles.bannerCharName}>{name}</h1>
+            <p
+              className={styles.bannerCharDescr}
+              dangerouslySetInnerHTML={createHtml(description)}
+            ></p>
             <div className={styles.bannerCharBtns}>
-              <PrimaryButtonLink link={`hero/${char.id}`} text="Info" />
-              <PrimaryButtonLink link={char.urls[1].url} text="Wiki" />
+              <PrimaryButtonLink link={`hero/${id}`} text="Info" />
+              <PrimaryButtonLink link={urls[1].url} text="Wiki" />
             </div>
           </div>
         </div>
