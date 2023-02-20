@@ -4,8 +4,7 @@ import { SeriesItem } from "../../utils/types";
 import styles from "../modal/modal.module.scss";
 
 const ModalSeries: FC<{ modalItem: SeriesItem[] }> = ({ modalItem }) => {
-  const { thumbnail, title, description, startYear, endYear, characters } =
-    modalItem[0];
+  const { thumbnail, title, description, startYear, endYear } = modalItem[0];
   const img = thumbnail?.path + "." + thumbnail?.extension;
 
   return (

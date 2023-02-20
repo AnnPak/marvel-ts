@@ -131,4 +131,5 @@ export type TPrimaryButton = {
 export type TModal = {
   isOpen: boolean;
   ref?: React.RefObject<HTMLButtonElement>;
+  deleteModalElement: () => void;
 };

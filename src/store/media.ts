@@ -73,7 +73,7 @@ const comicsSlice = createSlice({
       })
 
       .addCase(fetchHeroSeries.pending, (state) => {
-        state.fetchSeriesLoading = false;
+        state.fetchSeriesLoading = true;
         state.fetchSeriesError = false;
         state.heroSeries = [];
       })

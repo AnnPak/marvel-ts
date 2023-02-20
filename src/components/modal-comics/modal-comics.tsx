@@ -1,9 +1,10 @@
 import { FC } from "react";
+import moment from "moment";
+import { Slide } from "react-slideshow-image";
+
 import { ComicsItem } from "../../utils/types";
 
 import styles from "../modal/modal.module.scss";
-import moment from "moment";
-import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
 const ModalComics: FC<{ modalItem: ComicsItem[] }> = ({ modalItem }) => {

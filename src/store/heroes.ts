@@ -111,6 +111,7 @@ const heroSlice = createSlice({
   },
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { actions, reducer } = heroSlice;
 
 export default reducer;

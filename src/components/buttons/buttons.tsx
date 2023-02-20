@@ -1,9 +1,10 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
+import classNames from "classnames";
+
+import { TPrimaryButton } from "../../utils/types";
 
 import styles from "./buttons.module.scss";
-import { TPrimaryButton } from "../../utils/types";
-import classNames from "classnames";
 
 export const PrimaryButton: FC<TPrimaryButton> = ({
   text,

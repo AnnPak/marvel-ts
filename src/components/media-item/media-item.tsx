@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { THeroComics } from "../../utils/types";
+
 import styles from "./media-item.module.scss";
 
 const MediaItem: FC<THeroComics & { onClick: () => void }> = (props) => {

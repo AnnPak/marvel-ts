@@ -1,15 +1,16 @@
+import { FC, useEffect, useState } from "react";
 import classNames from "classnames";
+import { Link } from "react-router-dom";
 
-import styles from "./app-banner.module.scss";
-import appStyles from "../app/app.module.scss";
 import { PrimaryButtonLink } from "../buttons/buttons";
 import { RootState, useAppDispatch, useAppSelector } from "../../store";
-import { FC, useEffect, useState } from "react";
 import { fetchHero } from "../../store/heroes";
 import { THero } from "../../utils/types";
-import { Link } from "react-router-dom";
 import { CircleLoader } from "../loader/loader";
+
 import masrvelImg from "../../assets/marvel.jpg";
+import styles from "./app-banner.module.scss";
+import appStyles from "../app/app.module.scss";
 
 const AppBanner = () => {
   const dispatch = useAppDispatch();

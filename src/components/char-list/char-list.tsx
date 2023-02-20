@@ -1,13 +1,15 @@
+import classNames from "classnames";
+
 import { RootState, useAppDispatch, useAppSelector } from "../../store";
 import { showMoreHeroes } from "../../store/heroes";
 import { THero } from "../../utils/types";
 import { PrimaryButton } from "../buttons/buttons";
 import CharItem from "../char-item/char-item";
 import { CircleLoader, DotsLoader } from "../loader/loader";
+
 import styles from "./char-list.module.scss";
 import loaderStyles from "../loader/loader.module.scss";
 import buttonStyles from "../buttons/buttons.module.scss";
-import classNames from "classnames";
 
 const CharList = () => {
   const { heroes, currentOffset, fetchHeroesLoading, showMoreHeroesLoading } =

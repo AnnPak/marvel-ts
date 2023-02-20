@@ -1,9 +1,12 @@
-import MediaItem from "../media-item/media-item";
 import { FC } from "react";
+
 import { THeroComics } from "../../utils/types";
-import styles from "./media-list.module.scss";
 import { useAppDispatch } from "../../store";
 import { getMediaItem } from "../../store/media";
+import { showModal } from "../../store/modal";
+import MediaItem from "../media-item/media-item";
+
+import styles from "./media-list.module.scss";
 
 const MediaList: FC<{
   heroMedia: THeroComics[];
@@ -11,8 +14,9 @@ const MediaList: FC<{
 }> = ({ heroMedia, type }) => {
   const dispatch = useAppDispatch();
 
-  const showModal = (itemId: number, type: "comics" | "series") => {
+  const openModal = (itemId: number, type: "comics" | "series") => {
     dispatch(getMediaItem({ mediaId: itemId, mediaType: type }));
+    dispatch(showModal());
     document.body.classList.add("modal-open");
   };
 
@@ -26,7 +30,7 @@ const MediaList: FC<{
             thumbnail={item.thumbnail}
             title={item.title}
             description={item.description}
-            onClick={() => showModal(item.id, type)}
+            onClick={() => openModal(item.id, type)}
           />
         ))}
     </div>

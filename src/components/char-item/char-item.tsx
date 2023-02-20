@@ -1,9 +1,10 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
 import { TCharItem } from "../../utils/types";
-import style from "./char-item.module.scss";
-import { Link } from "react-router-dom";
 import { createHtml } from "../../utils/utils";
+
+import style from "./char-item.module.scss";
 
 const CharItem: FC<TCharItem> = (props) => {
   const { id, name, description, thumbnail, comics, series } = props;
