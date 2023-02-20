@@ -13,6 +13,7 @@ const MediaList: FC<{
 
   const showModal = (itemId: number, type: "comics" | "series") => {
     dispatch(getMediaItem({ mediaId: itemId, mediaType: type }));
+    document.body.style.overflow = "hidden";
   };
 
   return (
