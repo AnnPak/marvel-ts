@@ -5,7 +5,7 @@ const AppHeader = () => {
   return (
     <header className={styles.headerTitle}>
       <h1>
-        <a href="/">MARVEL</a>
+        <a href={process.env.PUBLIC_URL}>MARVEL</a>
         <p>information portal</p>
       </h1>
     </header>
