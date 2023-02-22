@@ -11,3 +11,7 @@ This is my SPA for practicing React skills.
 Frontend: TypeScript, CSS3 (Scss), React, Redux Toolkit.
 
 Backend (API): Marvel API.
+
+## How to run the app locally
+
+npm run start -> http://localhost:3000
