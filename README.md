@@ -13,5 +13,6 @@ Frontend: TypeScript, CSS3 (Scss), React, Redux Toolkit.
 Backend (API): Marvel API.
 
 ## How to run the app locally
-
-npm run start -> http://localhost:3000
+`git clone git@github.com:AnnPak/marvel-ts.git`
+`npm i`
+`npm run start` -> http://localhost:3000
