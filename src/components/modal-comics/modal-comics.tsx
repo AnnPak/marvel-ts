@@ -28,20 +28,20 @@ const ModalComics: FC<{ modalItem: ComicsItem[] }> = ({ modalItem }) => {
             <p className={styles.charInfoDescr}>{description}</p>
             <div className={styles.charDetailInfo}>
               <ul>
-                {dates && dates[0]?.date && (
+                {!!dates && dates[0]?.date && (
                   <li>
                     <span>On sale date:</span>
                     <span>{moment(dates[0].date).format("DD MMMM YYYY")}</span>
                   </li>
                 )}
 
-                {prices && prices[0]?.price && (
+                {!!prices && prices[0]?.price && (
                   <li>
                     <span>Price:</span>
                     <span>{prices[0].price}$</span>
                   </li>
                 )}
-                {textObjects && textObjects[0]?.language && (
+                {!!textObjects && textObjects[0]?.language && (
                   <li>
                     <span>Language:</span>
                     <span>{textObjects[0].language}</span>
@@ -54,7 +54,7 @@ const ModalComics: FC<{ modalItem: ComicsItem[] }> = ({ modalItem }) => {
           </div>
         </div>
 
-        {images && images?.length > 1 && (
+        {!!images && (
           <div className={styles.slideContainer}>
             <h2>Other covers: </h2>
 

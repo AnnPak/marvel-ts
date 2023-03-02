@@ -10,7 +10,7 @@ const ModalOverlay: FC<{ closeModal: () => void; isOpen: boolean }> = ({
     <section
       className={classNames(
         styles.modalOverlay,
-        isOpen && styles.showModalOverlay
+        !!isOpen && styles.showModalOverlay
       )}
       onClick={() => closeModal()}
     />

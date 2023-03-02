@@ -23,14 +23,14 @@ const ModalSeries: FC<{ modalItem: SeriesItem[] }> = ({ modalItem }) => {
             <p className={styles.charInfoDescr}>{description}</p>
             <div className={styles.charDetailInfo}>
               <ul>
-                {startYear && (
+                {!!startYear && (
                   <li>
                     <span>On sale date:</span>
                     <span>{startYear}</span>
                   </li>
                 )}
 
-                {endYear && (
+                {!!endYear && (
                   <li>
                     <span>Price:</span>
                     <span>{endYear}</span>

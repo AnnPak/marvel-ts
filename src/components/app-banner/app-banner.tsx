@@ -36,12 +36,12 @@ const AppBanner = () => {
   }, []);
 
   useEffect(() => {
-    hero && setChar(hero[0]);
+    !!hero && setChar(hero[0]);
   }, [hero]);
 
   return (
     <>
-      {char && !fetchHeroLoading && <AppBannerComponent char={char} />}
+      {!!char && !fetchHeroLoading && <AppBannerComponent char={char} />}
       {(!char || fetchHeroLoading) && <AppBannerLoading />}
     </>
   );

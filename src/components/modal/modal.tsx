@@ -39,9 +39,9 @@ const Modal: FC<PropsWithChildren<TModal>> = ({
   return createPortal(
     <>
       <ModalOverlay isOpen={isOpen} closeModal={() => closeModal()} />
-      <div className={classNames(styles.modal, isOpen && styles.modalShow)}>
+      <div className={classNames(styles.modal, !!isOpen && styles.modalShow)}>
         <CloseBtn closeModal={() => closeModal()} />
-        {children && children}
+        {!!children && children}
       </div>
     </>,
     modalRoot

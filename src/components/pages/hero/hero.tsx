@@ -47,7 +47,7 @@ const HeroPage = () => {
   }, [heroId, dispatch]);
 
   useEffect(() => {
-    hero && setCurrentHero(hero[0]);
+    !!hero && setCurrentHero(hero[0]);
   }, [hero]);
 
   const deleteModalElementFunc = () => {
@@ -56,10 +56,10 @@ const HeroPage = () => {
 
   return (
     <section className={bannerStyles.heroDetailPage}>
-      {currentHero && !fetchHeroLoading && (
+      {!!currentHero && !fetchHeroLoading && (
         <AppBannerComponent char={currentHero} />
       )}
-      {fetchHeroLoading && <AppBannerLoading />}
+      {!!fetchHeroLoading && <AppBannerLoading />}
 
       <HeroMediaItems />
 
@@ -74,20 +74,17 @@ const HeroPage = () => {
 const HeroMediaItems = () => {
   const { heroComics, heroSeries, fetchComicsLoading, fetchSeriesLoading } =
     useAppSelector((store: RootState) => store.media);
-
   return (
     <section className={appStyles.container}>
       <div className={styles.comicsBlock}>
         <h2>Comics:</h2>
-        {!!heroComics?.length && (
-          <MediaList heroMedia={heroComics} type="comics" />
-        )}
+        {!!heroComics && <MediaList heroMedia={heroComics} type="comics" />}
 
-        {!heroComics.length && !fetchComicsLoading && (
+        {!Boolean(heroComics.length) && !fetchComicsLoading && (
           <p>There is no comics for this character</p>
         )}
 
-        {fetchComicsLoading && (
+        {!!fetchComicsLoading && (
           <div className={loaderStyles.heroesLoading}>
             <CircleLoader />
           </div>
@@ -96,15 +93,13 @@ const HeroMediaItems = () => {
 
       <div className={styles.comicsBlock}>
         <h2>Series:</h2>
-        {!!heroSeries?.length && (
-          <MediaList heroMedia={heroSeries} type="series" />
-        )}
+        {!!heroSeries && <MediaList heroMedia={heroSeries} type="series" />}
 
-        {!heroSeries.length && !fetchSeriesLoading && (
+        {!Boolean(heroSeries.length) && !fetchSeriesLoading && (
           <p>There is no comics for this character</p>
         )}
 
-        {fetchSeriesLoading && (
+        {!!fetchSeriesLoading && (
           <div className={loaderStyles.heroesLoading}>
             <CircleLoader />
           </div>

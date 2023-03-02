@@ -17,7 +17,7 @@ const MediaItem: FC<THeroComics & { onClick: () => void }> = (props) => {
             })`,
           }}
         ></div>
-        {description ? (
+        {!!description ? (
           <p
             className={styles.charItemDescr}
             dangerouslySetInnerHTML={createHtml(description)}

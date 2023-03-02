@@ -22,7 +22,7 @@ const MediaList: FC<{
 
   return (
     <div className={styles.comicsList}>
-      {heroMedia &&
+      {!!heroMedia &&
         heroMedia?.map((item) => (
           <MediaItem
             key={item.id}

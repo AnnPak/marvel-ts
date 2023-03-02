@@ -22,7 +22,7 @@ const CharList = () => {
 
   return (
     <>
-      {heroes?.length && (
+      {!!heroes && (
         <>
           <div className={styles.charlist}>
             {heroes?.map((hero: THero) => (
@@ -53,7 +53,7 @@ const CharList = () => {
         </>
       )}
 
-      {fetchHeroesLoading && (
+      {!!fetchHeroesLoading && (
         <div className={loaderStyles.heroesLoading}>
           <CircleLoader />
         </div>
